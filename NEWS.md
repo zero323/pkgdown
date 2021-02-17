@@ -1,3 +1,50 @@
+# pkgdown (development version)
+
+* pkgdown now recognizes GitLab URLs to the source repository and adds the corresponding icon
+  to the navbar (#1493). 
+  
+* External links now get the class "external-link" on top of their usual classes, if they had any. 
+  Therefore they can be targeted more easily by CSS rules. (#881, #1491)
+
+* pkgdown can now use the templates "in-header.html"/"after-head.html", "before-body.html" and 
+"after-body.html" whose content will be placed 
+(similarly to bookdown options `in_header`, `before_body` and `after_body`), 
+respectively, at the end of the `<head>` tag; 
+right below the opening `<body>` tag; and before the closing tag `</body>` (#1487).
+
+* Links for GitHub Enterprise and GitLab Enterprise repositories are detected 
+  by assuming such host address begin with `github.` or `gitlab.` 
+  (@ijlyttle, #1452).
+  
+* Make sidebar specification more flexible: users can now
+    * change the order of sidebar elements
+    * add a table of contents for the README
+    * add custom sidebar sections (title, text that has to be HTML)
+    * completely suppress the navbar (even "Dev status")
+    * provide their own HTML for the navbar. (#1443, #1488)
+
+
+* Protect the rules drawn by the CLI (as for example, in `build_site()`) against
+  very narrow terminal windows with small `getOption('width')`s 
+  (@maxheld83, #1435).
+
+* [Google Site Verification](https://support.google.com/webmasters/answer/9008080?hl=en) can now be configured for pkgdown sites.
+
+* `build_news()` recognises more styles of release heading (#1437).
+
+* Article subtitle, author and date (specified in the YAML frontmatter) are now 
+  correctly ommitted from the article table of contents in the sidebar 
+  (@maxheld83, #1428).
+
+* Missing topics makes the build fail when the environment variable `CI` is set
+  to `"true"` (@ThierryO, #1378).
+
+* The default navbar no longer includes a home icon - this took up precious
+  horizontal space and wasn't very useful since there is already a link to the 
+  home page immediately to its left (#1383).
+
+* `build_rmarkdown_format` internally sets `html_document(anchor_sections = FALSE)` so to avoid needless dependencies (@atusy, #1426).
+
 # pkgdown 1.6.1
 
 * The article index (used for autolinking vignettes across packages) 
